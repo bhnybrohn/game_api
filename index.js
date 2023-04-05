@@ -12,7 +12,9 @@
 
 const db  = require('./db')
 const express = require('express')
+const cors = require('cors')
 const app = express()
+app.use(cors())
 db()
 
 app.use(express.json());
@@ -32,6 +34,7 @@ app.post('/api/game', async function (req, res) {
            name, category
        })
         if(new_game){
+
        return     res.status(201).json({
                 "success": true,
                 "message":"new game created",
@@ -281,6 +284,7 @@ app.delete("/api/user/:id", async(req, res)=>{
 
 
 })
+
 app.get("*", function (req, res) {
     res.status(404).send({ message: " Route, Not found", success: false, status: 404 });
 })
