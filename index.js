@@ -290,7 +290,7 @@ app.get("*", function (req, res) {
 })
 
 
-
-app.listen(port=6000, () => {
+const port = process.env.PORT || 6000
+app.listen(port, () => {
     console.log(`starting server on port ${port}`);
 });
